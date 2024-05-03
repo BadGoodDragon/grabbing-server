@@ -1,23 +1,22 @@
 package org.grabbing.serverpart.entities;
 
-import javax.persistence.*;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Builder
-@Table(name = "query_host")
-public class Host {
+@Table(name = "map_item")
+public class MapItem {
     @Id @Column(name = "id") private Long id;
+    @Column(name = "object_id") private Long objectId;
 
-    @Column(name = "host_name") private String name;
-
-    @Column(name = "sampling_frequency") private Long samplingFrequency;
-    @Column(name = "last_take") private Long lastTake;
+    @Column(name = "map_key") private String key;
+    @Column(name = "map_value") private String value;
 }

@@ -1,7 +1,10 @@
 package org.grabbing.serverpart.services;
 
+import java.util.List;
+
 public interface AccountService {
     boolean register(String username, String password);
-    String generateToken(String username);
-    int checkAuthorization(String token);
+    int checkAuthorization(String username);
+    long getFaceIdByUsername(String username);
+    List<String> getAllByFaceId(long faceId);
 }

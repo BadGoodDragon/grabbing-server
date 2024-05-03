@@ -3,10 +3,10 @@ package org.grabbing.serverpart.servicesimpl;
 import lombok.RequiredArgsConstructor;
 import org.grabbing.serverpart.repositories.AccountRepository;
 import org.grabbing.serverpart.services.AccountService;
-import org.grabbing.serverpart.utilities.TokenGenerator;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -26,15 +26,19 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     @Transactional
-    public String generateToken(String username) {
-        String token = TokenGenerator.generate(256);
-        accountRepository.setToken(username, token);
-        return token;
+    public int checkAuthorization(String username) {
+        return -1;
     }
 
-    @Override
     @Transactional
-    public int checkAuthorization(String token) {
-        return 0;
+    @Override
+    public long getFaceIdByUsername(String username) {
+        return accountRepository.getFaceIdByUsername(username);
+    }
+
+    @Transactional
+    @Override
+    public List<String> getAllByFaceId(long faceId) {
+        return accountRepository.getAllByFaceId(faceId);
     }
 }

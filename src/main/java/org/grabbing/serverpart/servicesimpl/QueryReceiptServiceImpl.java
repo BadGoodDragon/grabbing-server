@@ -10,6 +10,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class QueryReceiptServiceImpl implements QueryReceiptService {
+
     @Override
     public List<QueryOutput> receive() {
         return List.of();

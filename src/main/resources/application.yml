@@ -3,12 +3,13 @@ server:
 spring:
   jpa:
     database: POSTGRESQL
-    show-sql: false
+    show-sql: true
     hibernate:
-      ddl-auto: none
+      ddl-auto: validate
+      #ddl-auto: create
   datasource:
     platform: postgres
-    url: jdbc:postgresql://localhost:5432/postgres_u2_db1
+    url: jdbc:postgresql://localhost:5432/db1?currentSchema=grabbing
     username: u2
     password: p2
     driverClassName: org.postgresql.Driver

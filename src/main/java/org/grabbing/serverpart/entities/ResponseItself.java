@@ -16,15 +16,15 @@ import java.util.Map;
 @Builder
 @Table(name = "response_itself")
 public class ResponseItself {
-    @Id
-    @Column(name = "id")
-    Long id;
-    @Column(name = "error")
-    Boolean error;
-    @Column(name = "status_code")
-    Integer statusCode;
-    @Column(name = "headers")
-    Map<String, String> headers;
-    @Column(name = "body")
-    String body;
+    @Id @Column(name = "id") private Long id;
+
+    @Column(name = "error") private Boolean error;
+    @Column(name = "status_code") private Integer statusCode;
+
+    @Column(name = "headers_id") private Long headersMapStartId;
+    @Column(name = "body") private String body;
+
+    @Column(name = "enabled") private Boolean enabled;
 }
+    /*@Column(name = "headers")
+    private Map<String, String> headers;*/

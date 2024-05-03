@@ -14,9 +14,6 @@ import lombok.NoArgsConstructor;
 @Builder
 @Table(name = "face")
 public class Face {
-    @Id
-    @Column(name = "id")
-    Long id;
-    @Column(name = "name")
-    String name;
+    @Id @Column(name = "id") private Long id;
+    @Column(name = "face_name") private String name;
 }

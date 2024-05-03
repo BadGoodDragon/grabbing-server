@@ -1,8 +1,10 @@
 package org.grabbing.serverpart.services;
 
 public interface FaceService {
-    boolean register(String username, String password);
+    long register(String name);
 
-    boolean attach(String username);
-    boolean detach(String username);
+    boolean attach(String username, long faceId);
+    boolean detach(String username, long faceId);
+
+    String getNameById(long faceId);
 }
