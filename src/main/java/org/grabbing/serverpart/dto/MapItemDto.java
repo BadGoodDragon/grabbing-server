@@ -5,11 +5,10 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Data
-@Builder
-public class MapItemDto {
-    private String first;
-    private String second;
+public interface MapItemDto {
+    public String getFirst();
+    public String getSecond();
+
+    public void setFirst(String first);
+    public void setSecond(String second);
 }

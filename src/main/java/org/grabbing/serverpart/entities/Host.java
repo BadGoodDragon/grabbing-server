@@ -7,6 +7,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.Instant;
+
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,5 +21,5 @@ public class Host {
     @Column(name = "host_name") private String name;
 
     @Column(name = "sampling_frequency") private Long samplingFrequency;
-    @Column(name = "last_take") private Long lastTake;
+    @Column(name = "last_take") private Instant lastTake;
 }
