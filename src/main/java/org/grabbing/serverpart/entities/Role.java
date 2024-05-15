@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
 //import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.Column;
@@ -17,12 +18,12 @@ import javax.persistence.Table;
 @Data
 @Builder
 @Table(name = "account_role")
-public class Role /*implements GrantedAuthority*/ {
+public class Role implements GrantedAuthority {
     @Id @Column(name = "id") private Long id;
     @Column(name = "role_name") private String roleName;
 
-    /*@Override
+    @Override
     public String getAuthority() {
         return roleName;
-    }*/
+    }
 }

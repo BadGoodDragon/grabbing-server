@@ -50,4 +50,10 @@ public class FaceServiceImpl implements FaceService {
     public String getNameById(long faceId) {
         return faceRepository.getName(faceId);
     }
+
+    @Transactional
+    @Override
+    public boolean check(String username) {
+        return accountRepository.hasFace(username);
+    }
 }

@@ -7,4 +7,6 @@ public interface FaceService {
     boolean detach(String username, long faceId);
 
     String getNameById(long faceId);
+
+    boolean check(String username);
 }

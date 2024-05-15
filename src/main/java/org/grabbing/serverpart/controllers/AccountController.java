@@ -6,7 +6,10 @@ import org.grabbing.serverpart.services.AccountService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;*/
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,26 +20,9 @@ public class AccountController {
     private final AccountService accountService;
 
     @PostMapping("/register")
-    private boolean register() {
-        /*Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
-        /*String username = authentication.getName();
-        String password = (String) authentication.getCredentials();*/
-
-        //return accountService.register(username, password);
-        return accountService.register("username", "password");
-    }
-
-    @PostMapping("/generatetoken")
-    private String generateToken() {
-        //Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
-        //String username = authentication.getName();
-        //String password = "pw"; // работает только если
-                                    // добавлена система проверки авторизации
-
-        //return accountService.generateToken(username);
-        return "fhfgfhfhg";
+    private boolean register(@RequestHeader("X-Username") String username,
+                             @RequestHeader("X-Password") String password) {
+        return accountService.register(username, password);
     }
 
 }

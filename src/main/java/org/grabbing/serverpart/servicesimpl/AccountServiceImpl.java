@@ -3,6 +3,7 @@ package org.grabbing.serverpart.servicesimpl;
 import lombok.RequiredArgsConstructor;
 import org.grabbing.serverpart.repositories.AccountRepository;
 import org.grabbing.serverpart.services.AccountService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -12,6 +13,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class AccountServiceImpl implements AccountService {
     private final AccountRepository accountRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     @Transactional
@@ -19,7 +21,7 @@ public class AccountServiceImpl implements AccountService {
         if (accountRepository.checkExistence(username)) {
             return false;
         } else {
-            accountRepository.register(username, password);
+            accountRepository.register(username, passwordEncoder.encode(password));
             return true;
         }
     }

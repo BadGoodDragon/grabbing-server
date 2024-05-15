@@ -12,9 +12,9 @@ import java.util.Map;
 @Data
 @Builder
 public class ResponseInput {
-    private int id;
+    private long id;
     private int statusCode;
     private Map<String, String> responseHeaders;
     private String responseBody;
-    boolean error;
+    private boolean error;
 }

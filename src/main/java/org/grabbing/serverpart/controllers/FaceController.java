@@ -5,10 +5,9 @@ import org.grabbing.serverpart.services.AccountService;
 import org.grabbing.serverpart.services.FaceService;
 /*import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;*/
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,9 +19,10 @@ public class FaceController {
     private final FaceService faceService;
 
     @PostMapping("/register")
-    private boolean register() {
-        String username = "username";
-        String name = "f_test2";
+    private boolean register(@RequestBody String name) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        String username = authentication.getName();
 
         long id = faceService.register(name);
         if (id == -1) {
@@ -33,9 +33,9 @@ public class FaceController {
     }
 
     @PostMapping("/attach")
-    private boolean attach() {
-        String username = "username";
-        String attachedUsername = "username2";
+    private boolean attach(@RequestBody String attachedUsername) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
 
         long id = accountService.getFaceIdByUsername(username);
 
@@ -43,9 +43,9 @@ public class FaceController {
     }
 
     @PostMapping("/detach")
-    private boolean detach() {
-        String username = "username";
-        String detachedUsername = "username2";
+    private boolean detach(@RequestBody String detachedUsername) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
 
         long id = accountService.getFaceIdByUsername(username);
 
@@ -54,7 +54,8 @@ public class FaceController {
 
     @PostMapping("/getcurrentname")
     private String getCurrentName() {
-        String username = "username";
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
 
         long id = accountService.getFaceIdByUsername(username);
 
@@ -63,7 +64,8 @@ public class FaceController {
 
     @PostMapping("/getlistoflinkedusers")
     private List<String> getListOfLinkedUsers() {
-        String username = "username";
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
 
         long id = accountService.getFaceIdByUsername(username);
         List<String> list = accountService.getAllByFaceId(id);

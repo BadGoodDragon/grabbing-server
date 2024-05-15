@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetails;
 //import org.springframework.security.core.GrantedAuthority;
 //import org.springframework.security.core.userdetails.UserDetails;
 
@@ -16,7 +17,7 @@ import java.util.Set;
 @Data
 @Builder
 @Table(name = "account")
-public class Account /*implements UserDetails*/ {
+public class Account implements UserDetails {
     @Id @Column(name = "id") private Long id;
 
     @Column(name = "username") private String username;
@@ -34,7 +35,7 @@ public class Account /*implements UserDetails*/ {
 
     @Column(name = "enabled") private Boolean enabled;
 
-    /*@Override
+    @Override
     public boolean isAccountNonExpired() {
         return enabled;
     }
@@ -52,5 +53,5 @@ public class Account /*implements UserDetails*/ {
     @Override
     public boolean isEnabled() {
         return enabled;
-    }*/
+    }
 }
