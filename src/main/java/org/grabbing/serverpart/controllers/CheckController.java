@@ -6,10 +6,7 @@ import org.grabbing.serverpart.dto.ResponseInput;
 import org.grabbing.serverpart.services.FaceService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,7 +17,7 @@ public class CheckController {
     private final FaceService faceService;
 
 
-    @PostMapping("/check")
+    @GetMapping("/check")
     private int check() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
