@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface HostRepository extends JpaRepository<Host, Long> {
-    @Query(value = "insert into grabbing.query_host select nextval('grabbing.host_id_seq'), :name, :sampling_frequency, 0", nativeQuery = true)
+    @Query(value = "insert into grabbing.query_host select nextval('grabbing.host_id_seq'), :name, :sampling_frequency, '2024-05-21 19:56:28.000 +0300'", nativeQuery = true)
     Long createHost(@Param("name") String name, @Param("sampling_frequency") Long samplingFrequency);
 
     @Query(value = "select a.id from grabbing.query_host a where a.host_name = :name", nativeQuery = true)
