@@ -1,0 +1,15 @@
+server:
+  port: 8090
+spring:
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
+      #ddl-auto: create
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://94.103.92.242:8989/grabbing?currentSchema=grabbing
+    username: postgres
+    password: password8987
+    driverClassName: org.postgresql.Driver
