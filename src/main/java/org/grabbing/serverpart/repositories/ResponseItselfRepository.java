@@ -17,6 +17,14 @@ public interface ResponseItselfRepository extends JpaRepository<ResponseItself, 
                            @Param("headers_id") Long headersId,
                            @Param("body") String body);
 
+
+    @Query(value = "select error from grabbing.response_itself where id = :id", nativeQuery = true)
+    Boolean getError(@Param("id") Long id);
+    @Query(value = "select status_code from grabbing.response_itself where id = :id", nativeQuery = true)
+    Integer getStatusCode(@Param("id") Long id);
+    @Query(value = "select headers_id from grabbing.response_itself where id = :id", nativeQuery = true)
+    Long getHeadersId(@Param("id") Long id);
     @Query(value = "select body from grabbing.response_itself where id = :id", nativeQuery = true)
-    String getBodyByIdTest(@Param("id") Long id);
+    String getBody(@Param("id") Long id);
+
 }
