@@ -26,10 +26,10 @@ public class QueryReceiptServiceImpl implements QueryReceiptService {
     private final MapItemRepository mapItemRepository;
 
     @Override
-    public List<QueryOutput> receive() {
+    public List<QueryOutput> receive(long faceId) {
         List<QueryOutput> result = new ArrayList<>();
 
-        List<QueryTableOutput> outTable = queryItselfRepository.receive(QUANTITY);
+        List<QueryTableOutput> outTable = queryItselfRepository.receive(QUANTITY, faceId);
 
         for (QueryTableOutput queryTableOutput : outTable) {
             List<MapItemDto> parametersList = mapItemRepository

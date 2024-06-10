@@ -11,8 +11,8 @@ import java.util.List;
 
 @Repository
 public interface QueryItselfRepository extends JpaRepository<QueryItself, Long> {
-    @Query(value = "select id as id, url as url, parameters_id as parametersId, headers_id as queryHeadersId, body as queryBody from grabbing.receive(:quantity)", nativeQuery = true)
-    List<QueryTableOutput> receive(@Param("quantity") Long quantity);
+    @Query(value = "select id as id, url as url, parameters_id as parametersId, headers_id as queryHeadersId, body as queryBody from grabbing.receive(:quantity, :face_id)", nativeQuery = true)
+    List<QueryTableOutput> receive(@Param("quantity") Long quantity, @Param("face_id") Long faceId);
 
     @Query(value = "update grabbing.query_itself " +
             "set is_has_response=true, response_id=:response_id " +
